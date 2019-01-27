@@ -13,6 +13,50 @@ yarn start
 
 Then open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Usage
+
+```jsx
+
+import React from "react";
+import { withHook } from "./hooks";
+
+const Child = withHook((props, { useState }) => {
+  const [name, setName] = useState("noName");
+  const [address, setAddress] = useState("noAddrress");
+
+  const handleNameChange = e => {
+    const val = e.target.value;
+    setName(val);
+  };
+
+  const handleAddressChange = e => {
+    const val = e.target.value;
+    setAddress(val);
+  };
+
+  return (
+    <div>
+      <p>user info</p>
+      name: {name} <input name={name} onInput={handleNameChange} />
+      <br />
+      address: {address} <input name={address} onInput={handleAddressChange} />
+      <br />
+      age: {props.age}
+    </div>
+  );
+});
+
+function App() {
+  render() {
+    return (
+      <div>
+        <Child age={18} />
+      </div>
+    );
+  }
+}
+```
+
 ## TODO
 
 [x] useState 不需要参数

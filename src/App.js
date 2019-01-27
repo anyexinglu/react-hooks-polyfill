@@ -2,8 +2,8 @@ import React from "react";
 import { withHook } from "./hooks";
 
 const Child = withHook((props, { useState }) => {
-  const [name, setName] = useState("noname");
-  const [address, setAddress] = useState("noaddr");
+  const [name, setName] = useState("noName");
+  const [address, setAddress] = useState("noAddrress");
   const handleNameChange = e => {
     const val = e.target.value;
     setName(val);
