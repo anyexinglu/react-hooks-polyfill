@@ -3,9 +3,9 @@ import React from "react";
 const useState = function(initialState) {
   this.count++;
   const stateName = Symbol.for(`state_${this.count}`);
-  const isFirstUse = !(stateName in this.store);
-  if (isFirstUse) {
-    this.store[stateName] = {
+  let current = this.store[stateName];
+  if (!current) {
+    current = {
       get: () => {
         return stateName in this.state ? this.state[stateName] : initialState;
       },
@@ -16,7 +16,8 @@ const useState = function(initialState) {
       }
     };
   }
-  const tuple = [this.store[stateName].get(), this.store[stateName].set];
+  this.store[stateName] = current;
+  const tuple = [current.get(), current.set];
   return tuple;
 };
 

@@ -57,6 +57,13 @@ function App() {
 }
 ```
 
+## 说明
+
+存在两种方式实现 useState，转成 class、fiber
+
+- 为啥要用 class 来解决？
+  如果使用闭包储存值，则值的改变不会造成 rerender ～
+
 ## TODO
 
 [x] useState 不需要参数
